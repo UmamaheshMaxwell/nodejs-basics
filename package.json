@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-basics",
+  "version": "1.0.0",
+  "description": "A repo to explore nodejs basics",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "uma": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "angular",
+    "express",
+    "web-API",
+    "mongoDB",
+    "MSSQL"
+  ],
+  "author": "Umamaheswararao Meka",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

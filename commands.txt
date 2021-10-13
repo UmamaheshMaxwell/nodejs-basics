@@ -1,0 +1,23 @@
+npm init      - This command will help us to set up package.json
+npm init -y   - This command will help us to set up package.json 
+                without any prompts
+npm install express - This command will help us express module from 
+                      https://www.npmjs.com/
+
+npm intsall - This will help you to install all the packages present in 
+              package.json file
+
+npm unintsall express - This will help you to uninstall all the packages 
+                        present in package.json file
+
+npm unintsall - This will help you to uninstall all the packages present 
+                in package.json file
+
+node app.js - To run the node file / application
+
+node app - We don't have to use extension , node would assume that we 
+           are trying to run .js file
+
+npm start - will run start command from package.json file
+
+npm run dev-start -  always use run in between npm and your own command
