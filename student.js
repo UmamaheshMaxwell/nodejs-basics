@@ -24,6 +24,7 @@ router.get("/", (req, res)=>{
     res.send(`My First Student API Connecting Database!!!`)
 })
 
+// READ
 router.get("/student", (req, res)=>{
     sql.connect(dbConfig, (err)=>{
         if(err){
@@ -44,6 +45,29 @@ router.get("/student", (req, res)=>{
     })
 })
 
+router.get("/student/:id", (req, res)=>{
+    const studentId = req.params.id
+
+    sql.connect(dbConfig, (err)=>{
+        if(err){
+            console.log(err)
+        } else {
+            console.log('Successfully connected to SQL server')
+        }
+
+        // create request 
+        const request = new sql.Request()
+
+        request.query(`SELECT TOP 100 * FROM Student WHERE ID=${studentId}`, (err, data)=>{
+            if(err){
+               throw err
+            }
+            res.json(data.recordset)
+        })
+    })
+})
+
+// CREATE
 router.post("/student", (req, res)=>{
     const {name, email, city} = req.body
 
@@ -56,6 +80,49 @@ router.post("/student", (req, res)=>{
         const request = new sql.Request()
         const insertQuery = `INSERT INTO Student (name, email, city) VALUES ('${name}', '${email}', '${city}')`
         request.query(insertQuery, (err, data)=>{
+            if(err){
+               throw err
+            }
+            res.json(data)
+        })
+    })
+})
+
+// UPDATE
+router.put("/student/:id", (req, res)=>{
+    const {name, email, city} = req.body
+    const studentId = req.params.id
+
+    sql.connect(dbConfig, (err)=>{
+        if(err){
+            throw err
+        } 
+
+        // create request 
+        const request = new sql.Request()
+        const updateQuery = `UPDATE Student SET name='${name}', email='${email}', city = '${city}' WHERE Id=${studentId}`
+        request.query(updateQuery, (err, data)=>{
+            if(err){
+               throw err
+            }
+            res.json(data)
+        })
+    })
+})
+
+// DELETE
+router.delete("/student/:id", (req, res)=>{
+    const studentId = req.params.id
+
+    sql.connect(dbConfig, (err)=>{
+        if(err){
+            throw err
+        } 
+
+        // create request 
+        const request = new sql.Request()
+        const deleteQuery = `DELETE FROM Student WHERE id=${studentId}`
+        request.query(deleteQuery, (err, data)=>{
             if(err){
                throw err
             }
