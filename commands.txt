@@ -13,6 +13,9 @@ npm unintsall express - This will help you to uninstall all the packages
 npm unintsall - This will help you to uninstall all the packages present 
                 in package.json file
 
+npm install -g anymodules - install any module globally so that it can 
+                            be used by all the projects
+
 node app.js - To run the node file / application
 
 node app - We don't have to use extension , node would assume that we 
